@@ -3,7 +3,7 @@
  *
  * Diwali aa rahi hai! Priya digital rangoli designs bana rahi hai terminal pe.
  * String transform methods use karke patterns banana hai.
- * Tu Priya ki madad kar!
+ * Tum Priya ki madad kar!
  *
  * Methods to explore: .slice(), .split(), .join(), .replace(),
  *   .replaceAll(), .repeat()
@@ -43,24 +43,50 @@
  * @example
  *   repeatPattern("*-", 4)                    // => "*-*-*-*-"
  *   extractRangoliCenter("***LOTUS***", 3, 8) // => "LOTUS"
- *   splitAndJoinRangoli("red,blue", ",", "-")  // => "red-blue"
+ *   splitAndJoinRangoli("red,blue", ",", "-") // => "red-blue"
  */
 export function repeatPattern(pattern, times) {
-  // Your code here
+  if (typeof pattern != "string" || times < 0 || !Number.isInteger(times)) {
+    return ""
+  }
+  return pattern.repeat(times);
 }
 
 export function extractRangoliCenter(design, start, end) {
-  // Your code here
+  if (typeof design != "string") {
+    return ""
+  }
+  if (typeof start != "number" || typeof end != "number") {
+    return ""
+  }
+  return design.slice(start,end);
 }
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
-  // Your code here
+  if (typeof colorString != "string") {
+    return ""
+  }
+
+  let cusOut = colorString.split(oldSep);
+  return cusOut.join(newSep);
 }
 
 export function replaceRangoliColor(design, oldColor, newColor) {
-  // Your code here
+  if (typeof design != "string") {
+    return ""
+  }
+
+  if (typeof oldColor != "string" || typeof newColor != "string") {
+    return ""
+  }
+  return design.replaceAll(oldColor,newColor);
 }
 
 export function makeRangoliBorder(char, length) {
-  // Your code here
+  if (typeof char != "string" || length <= 0) {
+    return ""
+  }
+
+  const design = char.repeat(5)
+  return design.slice(0,length)
 }

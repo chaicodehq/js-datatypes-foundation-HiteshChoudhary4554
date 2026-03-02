@@ -1,6 +1,6 @@
 /**
  * 🚂 Train Coach Finder - Array Search & Check
- *
+ * 
  * Indian Railways ke train mein passengers dhundhne hain!
  * Passenger list mein search karna hai — kaun hai, kaun nahi,
  * sab confirmed hain ya nahi. Array search methods ka tour hai yeh!
@@ -48,21 +48,48 @@
  *   areAllConfirmed(passengers)          // => true/false
  */
 export function findPassenger(passengers, name) {
-  // Your code here
+  if (!Array.isArray(passengers) || typeof name !== "string") {
+    return undefined
+  }
+  const passengerObj = passengers.find((element) => element.name.toLowerCase() === name.toLowerCase());
+  return passengerObj;
 }
 
 export function getPassengerIndex(passengers, name) {
-  // Your code here
+ if (!Array.isArray(passengers) || typeof name !== "string") {
+    return -1
+  }
+
+  const result = passengers.findIndex((element) => element.name.toLowerCase() === name.toLowerCase());
+
+  console.log("result",result)
+  return result
 }
 
 export function isAnyWaitlisted(passengers) {
-  // Your code here
+  if (!Array.isArray(passengers) || passengers.length === 0) {
+    return false
+  }
+
+  const result = passengers.some((passenger) => passenger.status === "waitlisted")
+
+  return result
 }
 
 export function areAllConfirmed(passengers) {
-  // Your code here
+  if (!Array.isArray(passengers) || passengers.length === 0) {
+    return false;
+  }
+
+  const result = passengers.every((passenger) => passenger.status === "confirmed")
+
+  return result;
 }
 
 export function getWaitlistedPassengers(passengers) {
-  // Your code here
+  if (!Array.isArray(passengers)) {
+    return [];
+  }
+  const result = passengers.filter((passenger) => passenger.status === "waitlisted")
+  return result;
 }
